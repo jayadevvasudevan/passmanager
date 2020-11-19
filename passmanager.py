@@ -26,6 +26,7 @@ try:
     cur = conn.cursor()
     c = int(input('''1 : Add password
 2: view All passwords 
+3:view specific site
 enter an option: '''))
     if c == 1:
         while ch =="y":
@@ -55,10 +56,10 @@ enter an option: '''))
         passs = cur.fetchall()
         for p in passs:
             if site == p[0]:
-                print(p[2])
-            else:
-                print("password not found or site dowsnt exist")
-                exit()
+                print("password is: "+str(p[2]))
+                found = 1
+        if found != 1: 
+            print("password not found :  ")          
         conn.commit()
     else:
         print("invalid option:")
